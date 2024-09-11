@@ -1,0 +1,21 @@
+CAPI=2:
+
+name: pss-bytes-up::fwperiph-dma-tb
+
+filesets:
+  tb:
+    files:
+      - fwperiph_dma_tb_pkg.sv:
+          include_path: .
+      - fwperiph_dma_tb.sv
+    file_type: systemVerilogSource
+    depend:
+      - fvutils::svt
+      - featherweight-vip::wb
+      - featherweight-ip::fw-wishbone-interconnect
+      - featherweight-ip::fwperiph-dma
+
+targets:
+  default:
+    filesets:
+      - tb

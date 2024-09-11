@@ -1,0 +1,44 @@
+
+package:
+  name: pss-bytes-up-intro
+
+  dep-sets:
+  - name: default-dev
+    deps:
+    - name: pytest
+      src: pypi
+    - name: pytest-fv
+      url: https://github.com/fvutils/pytest-fv.git
+    - name: fwvip-wb
+      url: https://github.com/featherweight-vip/fwvip-wb.git
+    - name: fwperiph-dma
+      url: https://github.com/featherweight-ip/fwperiph-dma.git
+    - name: fw-wishbone-interconnect
+      url: https://github.com/featherweight-ip/fw-wishbone-interconnect.git
+    - name: fw-wishbone-sram-ctrl
+      url: https://github.com/featherweight-ip/fw-wishbone-sram-ctrl.git
+    - name: svt
+      url: https://github.com/fvutils/svt.git
+    - name: zuspec-sv
+      src: pypi
+  - name: &default-dev-src
+    deps:
+    - name: pytest
+      src: pypi
+    - name: pytest-fv
+      url: https://github.com/fvutils/pytest-fv.git
+    - name: fwvip-wb
+      url: https://github.com/featherweight-vip/fwvip-wb.git
+    - name: fwperiph-dma
+      url: https://github.com/featherweight-ip/fwperiph-dma.git
+    - name: svt
+      url: https://github.com/fvutils/svt.git
+    - name: zuspec-sv
+      url: https://github.com/zuspec/zuspec-sv.git
+
+  paths: 
+    project:
+      lib-dirs:
+      - packages/zuspec-sv
+      - labs/shared
+
