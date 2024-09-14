@@ -1,5 +1,6 @@
 {
 "python.defaultInterpreterPath": "${workspaceFolder}/packages/python/bin/python3",
+"python.terminal.activateEnvironment": true,
 "python.testing.pytestArgs": [
     "tests"
 ],

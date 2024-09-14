@@ -21,7 +21,7 @@ package:
       url: https://github.com/fvutils/svt.git
     - name: zuspec-sv
       src: pypi
-  - name: &default-dev-src
+  - name: default-dev-src
     deps:
     - name: pytest
       src: pypi

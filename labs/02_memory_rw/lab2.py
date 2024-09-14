@@ -29,17 +29,17 @@ def test_lab2(dirconfig : pfv.DirConfig):
 
     # Invoke the 'zuspec' tool to generate a SystemVerilog implementation
     # of the PSS model
-#    flow.addTaskToPhase("generate.main", 
-#                        pfv.TaskCmd("Create PSS model implementation", cmd=[
-#                            "zuspec", "synth.sv.actor", "-action", "pss_top::Entry",
-#                            os.path.join(dirconfig.test_srcdir(), "lab1.pss")],
-#                            cwd=dirconfig.builddir()))
+    flow.addTaskToPhase("generate.main", 
+                        pfv.TaskCmd("Create PSS model implementation", cmd=[
+                            "zuspec", "synth.sv.actor", "-action", "pss_top::Entry",
+                            os.path.join(dirconfig.test_srcdir(), "lab2.pss")],
+                            cwd=dirconfig.builddir()))
 
     # Compile 'top.sv' using the active HDL simulator
     flow.addFileset("sim", pfv.FSVlnv("zuspec::sv"))
     flow.addFileset("sim", pfv.FSVlnv("pss-bytes-up::fwperiph-dma-tb"))
-#    flow.addFileset("sim", pfv.FSPaths(
-#                dirconfig.builddir(), ["pss_top_sv.sv"], "systemVerilogSource"))
+    flow.addFileset("sim", pfv.FSPaths(
+                dirconfig.builddir(), ["pss_top_sv.sv"], "systemVerilogSource"))
     flow.addFileset("sim", pfv.FSPaths(
                 dirconfig.test_srcdir(), [
                     "memory_rw_pkg.sv", "memory_rw_tb.sv"], "systemVerilogSource"))
