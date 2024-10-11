@@ -1,0 +1,41 @@
+
+import std_pkg::*;
+import addr_reg_pkg::*;
+
+struct CSR_s : packed_s<> {
+    bit     pause;
+    bit[31] rsvd;
+}
+
+struct CH_CSR_s : packed_s<> {
+    bit         ch_en;
+    bit         dst_sel;
+    bit         src_sel;
+    bit         inc_dst;
+    bit[28]     rsvd;
+}
+
+pure component dma_channel_regs : reg_group_c {
+    reg_c<CH_CSR_s>         csr;
+}
+
+pure component dma_regs : reg_group_c {
+    reg_c<CSR_s>            csr;
+    reg_c<bit[32]>          int_msk_a;
+    reg_c<bit[32]>          int_msk_b;
+    reg_c<bit[32]>          int_src_a;
+    reg_c<bit[32]>          int_src_b;
+//    dma_channel_regs        channels[32];
+
+}
+
+component pss_top {
+    transparent_addr_space_c<>  aspace;
+    dma_regs                    regs;
+
+    action Entry {
+        exec body {
+            comp.regs.csr.write_val(0);
+        }
+    }
+}

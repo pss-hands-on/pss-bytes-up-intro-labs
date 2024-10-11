@@ -28,7 +28,7 @@ component pss_top {
              */
 
             repeat (i : 4) {
-                data = read32(make_handle_from_handle(comp.addr_h, 4*i));
+//                data = read32(make_handle_from_handle(comp.addr_h, 4*i));
             }
         }
     }

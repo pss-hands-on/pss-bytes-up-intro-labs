@@ -164,3 +164,4 @@ cython_debug/
 rundir/
 packages/
 log
+obj_dir/

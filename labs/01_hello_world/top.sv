@@ -21,9 +21,9 @@
  ****************************************************************************/
 package api_impl_pkg;
     import zsp_sv::*;
-    import pss_top__Entry_pkg::*;
+    import pss_types::*;
 
-    class api_impl extends backend_api_null implements pss_top__Entry_prv::import_api;
+    class api_impl extends pss_types::pss_import_api;
     /*
     virtual task write64(bit[63:0] addr, bit[63:0] data); 
     endtask

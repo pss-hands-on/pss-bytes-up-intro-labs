@@ -23,6 +23,8 @@ package:
       src: pypi
   - name: default-dev-src
     deps:
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
     - name: pytest
       src: pypi
     - name: pytest-fv
@@ -41,4 +43,8 @@ package:
       lib-dirs:
       - packages/zuspec-sv
       - labs/shared
+  
+  env:
+    - name: PATH
+      path-prepend: "${IVPM_PACKAGES}/verilator/bin"
 

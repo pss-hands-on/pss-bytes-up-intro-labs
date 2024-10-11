@@ -1,5 +1,5 @@
 #****************************************************************************
-#* lab2.py
+#* lab4.py
 #*
 #* Copyright 2024 Matthew Ballance and Contributors
 #*
@@ -32,7 +32,7 @@ def test_lab2(dirconfig : pfv.DirConfig):
     flow.addTaskToPhase("generate.main", 
                         pfv.TaskCmd("Create PSS model implementation", cmd=[
                             "zuspec", "synth.sv.actor", "-action", "pss_top::Entry",
-                            os.path.join(dirconfig.test_srcdir(), "lab2.pss")],
+                            os.path.join(dirconfig.test_srcdir(), "lab4.pss")],
                             cwd=dirconfig.builddir()))
 
     # Compile 'top.sv' using the active HDL simulator
@@ -44,6 +44,7 @@ def test_lab2(dirconfig : pfv.DirConfig):
                 dirconfig.test_srcdir(), [
                     "memory_rw_pkg.sv", "memory_rw_tb.sv"], "systemVerilogSource"))
     flow.sim.top.add("memory_rw_tb")
+    flow.sim.debug = True
 
     # Run the compiled simulation
     run_args = flow.sim.mkRunArgs(dirconfig.rundir())
