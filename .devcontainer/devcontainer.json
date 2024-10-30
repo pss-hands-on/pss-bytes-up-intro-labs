@@ -23,7 +23,8 @@
 				"ms-vscode.cmake-tools",
 				"ms-python.python",
 				"matthew-ballance.vscode-pss-support",
-				"surfer-project.surfer"
+				"surfer-project.surfer",
+				"mshr-h.veriloghdl"
 			],
                         "settings": {
                                 "python.defaultInterpreterPath": "${workspaceLocation}/packages/python/bin/python"
