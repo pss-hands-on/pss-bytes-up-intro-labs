@@ -21,6 +21,8 @@ package:
       url: https://github.com/fvutils/svt.git
     - name: zuspec-sv
       src: pypi
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
   - name: default-dev-src
     deps:
     - name: verilator
@@ -41,7 +43,6 @@ package:
   paths: 
     project:
       lib-dirs:
-      - packages/zuspec-sv
       - labs/shared
   
   env:

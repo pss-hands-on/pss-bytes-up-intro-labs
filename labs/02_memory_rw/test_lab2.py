@@ -19,20 +19,36 @@
 #*     Author: 
 #*
 #****************************************************************************
+import io
 import os
 import pytest
+import subprocess
 from pytest_fv.fixtures import *
 import pytest_fv as pfv
 
-def test_lab3(dirconfig : pfv.DirConfig):
+def test_lab2(dirconfig : pfv.DirConfig):
     flow = pfv.FlowSim(dirconfig)
+
+    # Get the zuspec-sv share directory
+    result = subprocess.run(
+        ["zuspec", "synth.sv.share"],
+        stderr=subprocess.STDOUT,
+        stdout=subprocess.PIPE
+    ) 
+    zsp_sv_share = result.stdout.decode().strip()
+
+    if result.returncode != 0:
+        raise Exception("zuspec synth.sv.share command failed")
+    
+    # Add as a FuseSoC library path
+    flow.fs.add_library(zsp_sv_share)
 
     # Invoke the 'zuspec' tool to generate a SystemVerilog implementation
     # of the PSS model
     flow.addTaskToPhase("generate.main", 
                         pfv.TaskCmd("Create PSS model implementation", cmd=[
                             "zuspec", "synth.sv.actor", "-action", "pss_top::Entry",
-                            os.path.join(dirconfig.test_srcdir(), "lab3.pss")],
+                            os.path.join(dirconfig.test_srcdir(), "lab2.pss")],
                             cwd=dirconfig.builddir()))
 
     # Compile 'top.sv' using the active HDL simulator
@@ -44,7 +60,6 @@ def test_lab3(dirconfig : pfv.DirConfig):
                 dirconfig.test_srcdir(), [
                     "memory_rw_pkg.sv", "memory_rw_tb.sv"], "systemVerilogSource"))
     flow.sim.top.add("memory_rw_tb")
-    flow.sim.debug = True
 
     # Run the compiled simulation
     run_args = flow.sim.mkRunArgs(dirconfig.rundir())
