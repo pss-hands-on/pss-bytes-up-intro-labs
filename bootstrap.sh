@@ -5,6 +5,7 @@ script_dir=$(dirname $(realpath $0))
 if test -d ${script_dir}/packages; then
   echo "Note: ${script_dir}/packages already exists"
   echo "Note: No work to be done"
+  exit 0
 fi
 
 # Setup initial Python virtual environment
@@ -17,5 +18,5 @@ ${script_dir}/packages/python/bin/pip install --upgrade ivpm
 if test $? -ne 0; then exit 1; fi
 
 echo "Note: Updating packages"
-${script_dir}/packages/python/bin/ivpm update
+${script_dir}/packages/python/bin/ivpm update -a
 if test $? -ne 0; then exit 1; fi

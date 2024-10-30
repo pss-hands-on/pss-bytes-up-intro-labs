@@ -25,7 +25,7 @@ pure component dma_regs : reg_group_c {
     reg_c<bit[32]>          int_msk_b;
     reg_c<bit[32]>          int_src_a;
     reg_c<bit[32]>          int_src_b;
-//    dma_channel_regs        channels[32];
+    dma_channel_regs        channels[32];
 
 }
 
