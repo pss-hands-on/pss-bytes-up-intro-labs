@@ -21,7 +21,8 @@
 			"extensions": [
 				"ms-vscode.cpptools",
 				"ms-vscode.cmake-tools",
-				"matthew-ballance.vscode-pss-support"
+				"matthew-ballance.vscode-pss-support",
+				"surfer-project.surfer"	
 			],
                         "settings": {
                                 "python.defaultInterpreterPath": "${workspaceLocation}/packages/python/bin/python"
