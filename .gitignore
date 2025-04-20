@@ -165,3 +165,6 @@ rundir/
 packages/
 log
 obj_dir/
+
+verible.filelist
+

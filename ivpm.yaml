@@ -1,14 +1,47 @@
 
 package:
-  name: pss-bytes-up-intro
+  name: pss-bytes-up-intro-labs
 
   dep-sets:
   - name: default-dev
     deps:
-    - name: pytest
+#    - name: pytest
+#      src: pypi
+#    - name: pytest-fv
+#      url: https://github.com/fvutils/pytest-fv.git
+    - name: fwvip-wb
+      url: https://github.com/featherweight-vip/fwvip-wb.git
+      dep-set: default
+    - name: fwperiph-dma
+      url: https://github.com/featherweight-ip/fwperiph-dma.git
+      dep-set: default
+    - name: fw-wishbone-interconnect
+      url: https://github.com/featherweight-ip/fw-wishbone-interconnect.git
+      dep-set: default
+    - name: fw-wishbone-sram-ctrl
+      url: https://github.com/featherweight-ip/fw-wishbone-sram-ctrl.git
+      dep-set: default
+    - name: svt
+      url: https://github.com/fvutils/svt.git
+      dep-set: default
+    - name: zuspec-sv
       src: pypi
-    - name: pytest-fv
-      url: https://github.com/fvutils/pytest-fv.git
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
+    - name: dv-flow-mgr
+      url: https://github.com/dv-flow/dv-flow-mgr.git
+    - name: dv-flow-libhdlsim
+      url: https://github.com/dv-flow/dv-flow-libhdlsim.git
+    - name: dv-flow-libpss
+      url: https://github.com/dv-flow/dv-flow-libpss.git
+    - name: dv-flow-libide
+      url: https://github.com/dv-flow/dv-flow-libide.git
+
+  - name: default-dev-src
+    default-dep-set: default
+    deps:
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
     - name: fwvip-wb
       url: https://github.com/featherweight-vip/fwvip-wb.git
     - name: fwperiph-dma
@@ -20,30 +53,27 @@ package:
     - name: svt
       url: https://github.com/fvutils/svt.git
     - name: zuspec-sv
-      src: pypi
-    - name: verilator
-      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
-  - name: default-dev-src
-    deps:
-    - name: verilator
-      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.028/verilator-ubuntu-x64-5.028.tar.gz
-    - name: pytest
-      src: pypi
-    - name: pytest-fv
-      url: https://github.com/fvutils/pytest-fv.git
-    - name: fwvip-wb
-      url: https://github.com/featherweight-vip/fwvip-wb.git
-    - name: fwperiph-dma
-      url: https://github.com/featherweight-ip/fwperiph-dma.git
-    - name: svt
-      url: https://github.com/fvutils/svt.git
-    - name: zuspec-sv
       url: https://github.com/zuspec/zuspec-sv.git
+      dep-set: default-dev-src
+    - name: dv-flow-mgr
+      url: https://github.com/dv-flow/dv-flow-mgr.git
+      branch: types
+      dep-set: default-dev
+    - name: dv-flow-libhdlsim
+      url: https://github.com/dv-flow/dv-flow-libhdlsim.git
+    - name: dv-flow-libpss
+      url: https://github.com/dv-flow/dv-flow-libpss.git
+      dep-set: default-dev
+    - name: dv-flow-libide
+      url: https://github.com/dv-flow/dv-flow-libide.git
+      dep-set: default-dev
 
-  paths: 
-    project:
-      lib-dirs:
-      - labs/shared
+  path-sets: 
+  - name: project
+    paths:
+      - name: lib-dirs
+        path:
+        - labs/shared
   
   env:
     - name: PATH

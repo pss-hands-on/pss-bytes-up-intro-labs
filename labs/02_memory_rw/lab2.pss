@@ -9,10 +9,8 @@ component pss_top {
     exec init_down {
         transparent_addr_region_s<> region;
         region.addr = 0x000000000;
-        /*
         region.size = 0x800000000;
         addr_h = aspace.add_nonallocatable_region(region);
-         */
     }
 
     struct Exp {
