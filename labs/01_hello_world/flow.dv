@@ -1,0 +1,36 @@
+
+fragment:
+  tasks:
+  - name: sv-src-lab1
+    uses: std.FileSet
+    with:
+      include: "top.sv"
+      type: systemVerilogSource
+
+  - name: pss-src-lab1
+    uses: std.FileSet
+    with:
+      include: "*.pss"
+      type: pssSource
+
+  - name: pss-model-lab1
+    uses: pss.zsp.GenModelSV
+    needs: [pss-src-lab1]
+
+  - name: pss-actor-lab1
+    uses: pss.zsp.GenActorSV
+    needs: [pss-model-lab1]
+    with:
+      root_action: pss_top::Entry
+
+  - name: sim-img-lab1
+    uses: hdlsim.vlt.SimImage
+    needs: 
+    - pss.zsp.RuntimeSV
+    - pss-actor-lab1
+    - sv-src-lab1
+
+  - name: run_lab1
+    uses: hdlsim.vlt.SimRun
+    needs: [sim-img-lab1]
+

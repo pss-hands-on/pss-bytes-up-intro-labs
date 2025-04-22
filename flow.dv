@@ -1,0 +1,19 @@
+
+package:
+  name: pss-bytes-up-intro-labs
+
+  imports:
+  - packages/fwperiph-dma
+
+  tasks:
+  - name: init
+    body:
+      - name: setup-ide
+        uses: ide.vbl.UpdateFileList
+    needs: 
+    - fwperiph-dma.src-sv-rtl
+    - zsp.sv.src-sv
+  fragments:
+  - labs/
+    
+
